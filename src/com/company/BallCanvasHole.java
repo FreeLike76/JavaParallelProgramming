@@ -6,7 +6,7 @@ import java.awt.geom.Ellipse2D;
 public class BallCanvasHole {
     public int x;
     public int y;
-    private static final int RADIUS = 32;
+    private static final int RADIUS = 16;
 
     public BallCanvasHole(int x, int y){
         this.x = x;

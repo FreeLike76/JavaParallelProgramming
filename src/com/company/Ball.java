@@ -5,6 +5,8 @@ import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
 class Ball {
+    public boolean fell = false;
+
     private BallCanvas canvas;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
@@ -12,11 +14,13 @@ class Ball {
     private int y = 0;
     private int dx = 2;
     private int dy = 2;
-    public boolean fell = false;
+
+    private Color color;
 
 
-    public Ball(BallCanvas c) {
+    public Ball(BallCanvas c, Color color) {
         this.canvas = c;
+        this.color = color;
 
         if (Math.random() < 0.5) {
             x = new Random().nextInt(this.canvas.getWidth());
@@ -32,7 +36,7 @@ class Ball {
     }
 
     public void draw(Graphics2D g2) {
-        g2.setColor(Color.yellow);
+        g2.setColor(this.color);
         g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
     }
 
