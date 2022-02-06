@@ -5,7 +5,7 @@ import java.awt.geom.Ellipse2D;
 import java.util.Random;
 
 class Ball {
-    private Component canvas;
+    private BallCanvas canvas;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
     private int x = 0;
@@ -15,7 +15,7 @@ class Ball {
     public boolean fell = false;
 
 
-    public Ball(Component c) {
+    public Ball(BallCanvas c) {
         this.canvas = c;
 
         if (Math.random() < 0.5) {
@@ -34,7 +34,6 @@ class Ball {
     public void draw(Graphics2D g2) {
         g2.setColor(Color.yellow);
         g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
-
     }
 
     public boolean move() {
@@ -56,7 +55,7 @@ class Ball {
             y = this.canvas.getHeight() - YSIZE;
             dy = -dy;
         }
-        if (Math.pow((x - (double)canvas.getWidth() / 2), 2) + Math.pow((y - (double)canvas.getHeight() / 2), 2) < 256){
+        if (canvas.hole.isIn(x, y)){
             fell = true;
         }
         this.canvas.repaint();

@@ -10,6 +10,7 @@ public class BounceFrame extends JFrame {
     private BallCanvas canvas;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 350;
+    private JLabel fellCounter;
 
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
@@ -21,6 +22,10 @@ public class BounceFrame extends JFrame {
         content.add(this.canvas, BorderLayout.CENTER);
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.lightGray);
+
+        this.fellCounter = new JLabel("0");
+        canvas.setCounterLabel(fellCounter);
+        buttonPanel.add(fellCounter);
 
         JButton buttonStart = new JButton("Start");
         JButton buttonStop = new JButton("Stop");
