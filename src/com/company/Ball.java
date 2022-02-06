@@ -12,11 +12,11 @@ class Ball {
     private int y = 0;
     private int dx = 2;
     private int dy = 2;
+    public boolean fell = false;
 
 
     public Ball(Component c) {
         this.canvas = c;
-
 
         if (Math.random() < 0.5) {
             x = new Random().nextInt(this.canvas.getWidth());
@@ -32,12 +32,12 @@ class Ball {
     }
 
     public void draw(Graphics2D g2) {
-        g2.setColor(Color.darkGray);
+        g2.setColor(Color.yellow);
         g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
 
     }
 
-    public void move() {
+    public boolean move() {
         x += dx;
         y += dy;
         if (x < 0) {
@@ -56,6 +56,10 @@ class Ball {
             y = this.canvas.getHeight() - YSIZE;
             dy = -dy;
         }
+        if (Math.pow((x - (double)canvas.getWidth() / 2), 2) + Math.pow((y - (double)canvas.getHeight() / 2), 2) < 256){
+            fell = true;
+        }
         this.canvas.repaint();
+        return !fell;
     }
 }
