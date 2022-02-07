@@ -15,7 +15,7 @@ public class BallCanvasHole {
     }
     public void draw(Graphics2D g2) {
         g2.setColor(Color.black);
-        g2.fill(new Ellipse2D.Double(x, y, RADIUS * 2, RADIUS * 2));
+        g2.fill(new Ellipse2D.Double(x - RADIUS/2, y - RADIUS/2, RADIUS * 2, RADIUS * 2));
     }
 
     public boolean isIn(int ballX, int ballY){

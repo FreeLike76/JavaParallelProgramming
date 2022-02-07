@@ -31,6 +31,17 @@ class Ball {
         }
     }
 
+    public Ball(BallCanvas c, Color color, int x, int y, int dx, int dy) {
+        this.canvas = c;
+        this.color = color;
+
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+
+    }
+
     public static void f() {
         int a = 0;
     }
