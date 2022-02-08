@@ -63,19 +63,7 @@ public class BounceFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Ball bMax = new Ball(canvas, Color.blue,
-                        (int) (canvas.getWidth() * 0.6),
-                        (int) (canvas.getHeight() * 0.6),
-                        2, 2);
-
-                canvas.add(bMax);
-                BallThread threadMax = new BallThread(bMax);
-                threadMax.setPriority(Thread.MAX_PRIORITY);
-                threadMax.start();
-                System.out.println("Thread name = " + threadMax.getName()
-                        + ", Priority = " + threadMax.getPriority());
-
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 20; i++) {
                     Ball bMin = new Ball(canvas, Color.yellow,
                             (int) (canvas.getWidth() * 0.6),
                             (int) (canvas.getHeight() * 0.6),
@@ -87,6 +75,16 @@ public class BounceFrame extends JFrame {
                     System.out.println("Thread name = " + threadMin.getName()
                             + ", Priority = " + threadMin.getPriority());
                 }
+                Ball bMax = new Ball(canvas, Color.blue,
+                        (int) (canvas.getWidth() * 0.6),
+                        (int) (canvas.getHeight() * 0.6),
+                        2, 2);
+                canvas.add(bMax);
+                BallThread threadMax = new BallThread(bMax);
+                threadMax.setPriority(Thread.MAX_PRIORITY);
+                threadMax.start();
+                System.out.println("Thread name = " + threadMax.getName()
+                        + ", Priority = " + threadMax.getPriority());
             }
         });
 
