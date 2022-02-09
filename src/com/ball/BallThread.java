@@ -1,4 +1,4 @@
-package com.company;
+package com.ball;
 
 public class BallThread extends Thread {
     private Ball b;

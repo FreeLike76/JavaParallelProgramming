@@ -1,4 +1,4 @@
-package com.company;
+package com.ball;
 
 
 import javax.swing.*;
@@ -63,7 +63,7 @@ public class BounceFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < 50; i++) {
                     Ball bMin = new Ball(canvas, Color.yellow,
                             (int) (canvas.getWidth() * 0.6),
                             (int) (canvas.getHeight() * 0.6),

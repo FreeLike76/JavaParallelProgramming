@@ -1,4 +1,4 @@
-package com.company;
+package com.ball;
 
 import javax.swing.*;
 import java.awt.*;
