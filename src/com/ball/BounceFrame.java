@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 
 public class BounceFrame extends JFrame {
     private BallCanvas canvas;
-    public static final int WIDTH = 450;
-    public static final int HEIGHT = 350;
+    public static final int WIDTH = 640;
+    public static final int HEIGHT = 480;
 
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
@@ -29,6 +29,7 @@ public class BounceFrame extends JFrame {
         JButton buttonStartL = new JButton("Start Min");
         JButton buttonStartH = new JButton("Start Max");
         JButton buttonStartCompare = new JButton("Start Compare");
+        JButton buttonStartJoin = new JButton("Start Join");
         JButton buttonStop = new JButton("Stop");
 
         buttonStartL.addActionListener(new ActionListener() {
@@ -88,6 +89,26 @@ public class BounceFrame extends JFrame {
             }
         });
 
+        buttonStartJoin.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Ball b1 = new Ball(canvas, Color.green);
+                canvas.add(b1);
+                BallThread threadFirst = new BallThread(b1);
+
+                Ball b2 = new Ball(canvas, Color.red);
+                canvas.add(b2);
+                BallThreadJoin threadSecond = new BallThreadJoin(b2, threadFirst);
+
+                threadFirst.start();
+                System.out.println("Thread name = " + threadFirst.getName());
+
+                threadSecond.start();
+                System.out.println("Thread name = " + threadSecond.getName());
+            }
+        });
+
         buttonStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,6 +120,7 @@ public class BounceFrame extends JFrame {
         bottomPanel.add(buttonStartL);
         bottomPanel.add(buttonStartH);
         bottomPanel.add(buttonStartCompare);
+        bottomPanel.add(buttonStartJoin);
         bottomPanel.add(buttonStop);
 
         content.add(bottomPanel, BorderLayout.SOUTH);
