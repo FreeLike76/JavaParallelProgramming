@@ -5,14 +5,27 @@ public class LinePrinter {
     public final int MAX_PER_LINE = 100;
     public int symbolsInLine = 0;
 
-    public void checkNewLine(){
-        if (symbolsInLine == MAX_PER_LINE){
+    public void checkNewLine() {
+        if (symbolsInLine == MAX_PER_LINE) {
             System.out.print("\n");
             symbolsInLine = 0;
         }
     }
+
+    public void justPrintHorizontal() {
+        checkNewLine();
+        System.out.print("-");
+        symbolsInLine++;
+    }
+
+    public void justPrintVertical() {
+        checkNewLine();
+        System.out.print("|");
+        symbolsInLine++;
+    }
+
     public synchronized void printHorizontal() throws InterruptedException {
-        while(lastHorizontal){
+        while (lastHorizontal) {
             wait();
         }
         checkNewLine();
@@ -21,8 +34,9 @@ public class LinePrinter {
         lastHorizontal = true;
         notify();
     }
-    public synchronized void printVertical() throws InterruptedException{
-        while(!lastHorizontal){
+
+    public synchronized void printVertical() throws InterruptedException {
+        while (!lastHorizontal) {
             wait();
         }
         checkNewLine();
